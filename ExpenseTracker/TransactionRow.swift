@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIFontIcon
 
 struct TransactionRow: View {
     var transacrion: Transaction
@@ -16,6 +17,9 @@ struct TransactionRow: View {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(Color.icon.opacity(0.3))
                 .frame(width: 44, height: 44)
+                .overlay{
+                    FontIcon.text(.awesome5Solid(code: transacrion.icon), fontsize: 24, color: Color.icon)
+                }
             
             VStack(alignment: .leading, spacing: 6){
                 //MARK: Transaction Merchant
@@ -24,7 +28,7 @@ struct TransactionRow: View {
                     .bold()
                     .lineLimit(1)
                 //MARK: Transaction Category
-                Text(transacrion.Category)
+                Text(transacrion.category)
                     .font(.footnote)
                     .opacity(0.7)
                     .lineLimit(1)

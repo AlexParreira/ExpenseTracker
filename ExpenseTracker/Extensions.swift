@@ -22,7 +22,7 @@ extension DateFormatter{
     static let allNumericaBR: DateFormatter = {
         print("initializing DataFormatter")
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         
         return formatter
     }()
@@ -33,5 +33,19 @@ extension String{
     func dateParsed() -> Date{
         guard let parsedDate = DateFormatter.allNumericaBR.date(from: self) else { return Date() }
         return parsedDate
+    }
+}
+
+extension Date: Strideable{
+    func formatted() -> String{
+        return self.formatted(.dateTime.year().month().day())
+    }
+}
+
+
+extension Double{
+    
+    func roundedTo2Digits() -> Double{
+        return (self * 100).rounded() / 100
     }
 }
